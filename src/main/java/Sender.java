@@ -3,7 +3,7 @@ import jssc.SerialPortException;
 
 
 class Sender {
-    public void SendKeybordData(SerialPort serialPort, SetingsOfSendData setingsOfSendData,  int[] data) throws InterruptedException, SerialPortException {
+    public void sendKeybordData(SerialPort serialPort, SetingsOfSendData setingsOfSendData, int[] data) throws InterruptedException, SerialPortException {
 
 
         int rr2 = data[0];
@@ -39,5 +39,22 @@ class Sender {
         Thread.sleep(setingsOfSendData.getDelayTimeKeybord());
         serialPort.writeInt(rr6);
         Thread.sleep(setingsOfSendData.getDelayTimeKeybord());
+
+        try{
+            int[] tt1 = serialPort.readIntArray(1);
+            //int tt2 = serialPort.readBytes(1)[0];
+            //int tt = tt1<<8 + tt2;
+            //if (data.contains("S")){
+            //    System.out.print("!!!!!!!!!!!!!!!!!!!!!!" + data);
+            //    isReady.setMybool(true);
+            //}
+            //System.out.print(data);
+            System.out.print("get: +99 " + tt1[0]);
+            tt1 = serialPort.readIntArray(1);
+            System.out.println(" " + tt1[0]);
+        }catch (Exception ex){
+            System.out.println("get: - ");
+        }
+
     }
 }

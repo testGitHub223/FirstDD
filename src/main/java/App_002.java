@@ -65,8 +65,8 @@ public class App_002 {
             //keyToSend.tt();
 
             //int [] data = new int[] {197, 194, 195, 196, 197};
-            //sender.SendKeybordData(serialPort, setingsOfSendData1, data);
-            //sender.SendKeybordData(serialPort, setingsOfSendData1, data);
+            //sender.sendKeybordData(serialPort, setingsOfSendData1, data);
+            //sender.sendKeybordData(serialPort, setingsOfSendData1, data);
 
 
 
@@ -78,7 +78,7 @@ public class App_002 {
             //for (int i = 0; i < 2304; i++){
                 KeyToSend keyToSend = algoritm.getKey();
                 if (keyToSend != null) {
-                    sender.SendKeybordData(serialPort, setingsOfSendData1, keyToSend.getData());
+                    sender.sendKeybordData(serialPort, setingsOfSendData1, keyToSend.getData());
                 }
                 Thread.sleep(0);
             }
@@ -92,7 +92,7 @@ public class App_002 {
                 //for (int i = 0; i < 2304; i++){
                 KeyToSend_v002 keyToSend_v002 = algoritm_v002.getKey();
                 if (keyToSend_v002 != null) {
-                    sender.SendKeybordData(serialPort, setingsOfSendData1, keyToSend_v002.getData(algoritm_v002.getCurrentTime()));
+                    sender.sendKeybordData(serialPort, setingsOfSendData1, keyToSend_v002.getData(algoritm_v002.getCurrentTime()));
                 }
                 Thread.sleep(0);
             }
@@ -119,6 +119,7 @@ public class App_002 {
     private static class PortReader implements SerialPortEventListener {
 
         public void serialEvent(SerialPortEvent event) {
+            System.out.println("get: !");
             if (event.isRXCHAR() && event.getEventValue() > 0) {
                 try {
                     //Получаем ответ от устройства, обрабатываем данные и т.д.
@@ -131,7 +132,7 @@ public class App_002 {
                     //    isReady.setMybool(true);
                     //}
                     //System.out.print(data);
-                    System.out.println(tt1[0] + " " + tt1[1]);
+                    System.out.println("get:" + tt1[0] + " " + tt1[1]);
                     if (tt1[0] == 251) {
                         nnnnnnnn = true;
                     }
