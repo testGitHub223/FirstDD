@@ -65,8 +65,8 @@ public class App_002 {
             //keyToSend.tt();
 
             //int [] data = new int[] {197, 194, 195, 196, 197};
-            //sender.sendKeybordData(serialPort, setingsOfSendData1, data);
-            //sender.sendKeybordData(serialPort, setingsOfSendData1, data);
+            //sender.sendData(serialPort, setingsOfSendData1, data);
+            //sender.sendData(serialPort, setingsOfSendData1, data);
 
 
 
@@ -78,7 +78,7 @@ public class App_002 {
             //for (int i = 0; i < 2304; i++){
                 KeyToSend keyToSend = algoritm.getKey();
                 if (keyToSend != null) {
-                    sender.sendKeybordData(serialPort, setingsOfSendData1, keyToSend.getData());
+                    sender.sendData(serialPort, setingsOfSendData1, keyToSend.getData());
                 }
                 Thread.sleep(0);
             }

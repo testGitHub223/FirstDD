@@ -3,9 +3,9 @@ import jssc.SerialPortException;
 
 
 class Listener03 {
-    public void getData(SerialPort serialPort) throws InterruptedException, SerialPortException {
-
-        try{
+    public boolean getData(SerialPort serialPort) throws InterruptedException, SerialPortException {
+        boolean isReady = false;
+        try {
             int[] tt1 = serialPort.readIntArray(1);
             //int tt2 = serialPort.readBytes(1)[0];
             //int tt = tt1<<8 + tt2;
@@ -14,12 +14,19 @@ class Listener03 {
             //    isReady.setMybool(true);
             //}
             //System.out.print(data);
-            System.out.print("get: +99 " + tt1[0]);
-            tt1 = serialPort.readIntArray(1);
-            System.out.println(" " + tt1[0]);
-        }catch (Exception ex){
-            System.out.println("get: - ");
-        }
+            System.out.println("get Listener03 +: " + tt1[0]);
+            if (tt1[0] == 97){
+                int[] tt2 = serialPort.readIntArray(1);
+                System.out.println("get Listener03 +: " + tt1[0] + " " + tt2[0]);
+                if (tt2[0] > 10) {
 
+                    isReady = true;
+                    System.out.println("Redy to send");
+                }
+            }
+        } catch (Exception ex) {
+            System.out.println("get Listener03 -: ");
+        }
+        return isReady;
     }
 }
