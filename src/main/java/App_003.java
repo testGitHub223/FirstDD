@@ -16,7 +16,7 @@ public class App_003 {
 
 
     private static SerialPort serialPort;
-    private static Sender03 sender03;
+    //private static Sender03 sender03;
 
     private static String strData;
 
@@ -44,7 +44,7 @@ public class App_003 {
                 serialPort.addEventListener(new  PortReader(), SerialPort.MASK_RXCHAR);
                 //Отправляем запрос устройству
 
-                sender03 = new Sender03(serialPort);
+                ////sender03 = new Sender03(serialPort);
 
                 System.out.println("starting ...");
                 Thread.sleep(2000);
@@ -53,10 +53,10 @@ public class App_003 {
                 for (int j = 0; j < 100; j++) {
                     if (j > 50) {
                         //System.out.println("a1" + Thread.currentThread().getName());
-                        sender03.sendKeybordInit();
-                        sender03.sendData(getIntArray());
-                        sender03.sendPackageNumber(101, 102);
-                        sender03.sendKeybordEnd();
+                        //sender03.sendKeybordInit();
+                        //sender03.sendData(getIntArray());
+                        //sender03.sendPackageNumber(101, 102);
+                        //sender03.sendKeybordEnd();
                         j = 0;
 
 //                        try {

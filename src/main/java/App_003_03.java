@@ -1,7 +1,6 @@
 import jssc.SerialPort;
-import jssc.SerialPortException;
+import sender.Sender03;
 
-import java.sql.Time;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +35,7 @@ public class App_003_03 {
         for (int j = 0; j < 100; j++) {
             if (j > 50) {
 
-                if((timeStart.plusMinutes(56)).isBefore(LocalDateTime.now())){
+                if((timeStart.plusMinutes(21055)).isBefore(LocalDateTime.now())){
                     j = 200;
                     send(sender03, 0);
                 } else {
@@ -58,6 +57,8 @@ public class App_003_03 {
                         } else {
                             send(sender03, 1);
                             isGroup = true;
+                            // фокус
+                            //send(sender03, 4);
                         }
 
 
@@ -164,6 +165,26 @@ public class App_003_03 {
         return inttt;
     }
 
+    protected static int[] mClick() {
+        int[] inttt = new int[15];
+        inttt[0] = 77;
+        inttt[1] = 1;
+        inttt[2] = 0;
+        inttt[3] = 0;
+        inttt[4] = 0;
+        inttt[5] = 1;
+        inttt[6] = 0;
+        inttt[7] = 0;
+        inttt[8] = 0;
+        inttt[9] = 0;
+        inttt[10] = 0;
+        inttt[11] = 0;
+        inttt[12] = 0;
+        inttt[13] = 0;
+        inttt[14] = 0;
+        return inttt;
+    }
+
 
 
     protected static void send(Sender03 sender03, int number) {
@@ -175,32 +196,19 @@ public class App_003_03 {
         System.out.println("!!! " + number + " " + group);
         switch (number) {
             case 0:
-                try {
-                    System.out.println(sender03.sendKeybordData(teleport()));
-                } catch (SerialPortException e) {
-                    e.printStackTrace();
-                }
+                System.out.println(sender03.sendKeybordData(teleport()));
                 break;
             case 1:
-                try {
-                    System.out.println(sender03.sendKeybordData(nextTrg()));
-                } catch (SerialPortException e) {
-                    e.printStackTrace();
-                }
+                System.out.println(sender03.sendKeybordData(nextTrg()));
                 break;
             case 2:
-                try {
-                    System.out.println(sender03.sendKeybordData(selfBuff()));
-                } catch (SerialPortException e) {
-                    e.printStackTrace();
-                }
+                System.out.println(sender03.sendKeybordData(selfBuff()));
                 break;
             case 3:
-                try {
-                    System.out.println(sender03.sendKeybordData(group(group)));
-                } catch (SerialPortException e) {
-                    e.printStackTrace();
-                }
+                System.out.println(sender03.sendKeybordData(group(group)));
+                break;
+            case 4:
+                System.out.println(sender03.sendKeybordData(mClick()));
                 break;
         }
     }
